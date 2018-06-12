@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
-        <v-btn @click="decrement">-</v-btn>
-        <v-btn @click="increment">+</v-btn>
+        <div class="greeting">Hello{{getGreeting}}</div>
+        <v-btn class="primary" dark @click="decrement">-</v-btn>
+        <v-btn class="primary" dark @click="increment">+</v-btn>
     </div>
 </template>
 
@@ -12,21 +12,26 @@ import {Component, Prop, Vue} from "vue-property-decorator";
 @Component
 export default class HelloComponent extends Vue {
     @Prop() name!: string;
-    @Prop() initialEnthusiasm!: number;
+    @Prop() initCount!: string;
 
-    enthusiasm = this.initialEnthusiasm;
+    count:number = 0;
 
     increment() {
-        this.enthusiasm++;
+        this.count++;
     }
+    
     decrement() {
-        if (this.enthusiasm > 1) {
-            this.enthusiasm--;
+        if (this.count > 1) {
+            this.count--;
         }
     }
 
-    get exclamationMarks(): string {
-        return Array(this.enthusiasm + 1).join('!');
+    created(): void {
+        this.count = parseInt(this.initCount);
+    }
+    
+    get getGreeting(): string {
+        return Array(this.count + 1).join(" "+this.name);
     }
 }
 </script>

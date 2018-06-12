@@ -36,10 +36,9 @@ namespace vuetify_ts_aspnetcore_starter
             
             app.UseMvc(routes =>
             {
-                routes.MapSpaFallbackRoute("spa-fallback", new {
-                    Controllers = "Home",
-                    action = "Index"
-                });
+                routes.MapSpaFallbackRoute(
+                    name: "spa-fallback",
+                    defaults: new { controller = "Home", action = "Index" });
                 
                 routes.MapRoute(
                     name: "default",

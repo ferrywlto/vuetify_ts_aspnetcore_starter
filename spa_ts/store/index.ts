@@ -1,8 +1,8 @@
 import Vuex, { StoreOptions } from 'vuex'
 import { RootState } from './rootState'
 import Vue from "vue";
-import { profile } from './profile'
-import { account } from './account'
+import { demo } from "./demo";
+
 Vue.use(Vuex);
 
 const store: StoreOptions<RootState> = {
@@ -11,7 +11,7 @@ const store: StoreOptions<RootState> = {
     state: {
         version: ''
     },
-    modules: { profile, account }
+    modules: { demo }
 };
 
 export default new Vuex.Store<RootState>(store);

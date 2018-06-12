@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace vuetify_ts_aspnetcore_starter.Controllers
 {
@@ -7,8 +8,7 @@ namespace vuetify_ts_aspnetcore_starter.Controllers
         // GET
         public IActionResult Index()
         {
-            return
-            View();
+            return View();
         }
     }
 }
