@@ -142,7 +142,7 @@
                 .catch((error:Error)=>{
                     console.log("save history failed: "+error);
                 });
-            this.$router.push({ name:"history" });         
+            this.$router.push({ path:"/history/100" });         
         }
         
         onHelloClicked() {
