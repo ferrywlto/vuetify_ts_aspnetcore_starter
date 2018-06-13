@@ -2,6 +2,14 @@
     <v-app>
         <v-navigation-drawer class="primary" v-model="drawer" dark temporary app>
             <v-list>
+                <v-list-tile @click="onHelloClicked">
+                    <v-list-tile-action>
+                        <v-icon>insert_emoticon</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Hello</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
                 <v-list-tile @click="oniPhoneClicked">
                     <v-list-tile-action>
                         <v-icon>phone_iphone</v-icon>
@@ -16,6 +24,14 @@
                     </v-list-tile-action>
                     <v-list-tile-content>
                         <v-list-tile-title>Android</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+                <v-list-tile @click="onHistoryClicked">
+                    <v-list-tile-action>
+                        <v-icon>history</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>History</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
@@ -113,6 +129,38 @@
             this.$router.push({ name:this.Android })
         }
         
+        onHistoryClicked() {
+            let history:DemoHistory = {
+                date: new Date(),
+                action: "history"
+            };
+
+            this.saveHistory(history)
+                .then(()=>{
+                    console.log("save history succeed");
+                })
+                .catch((error:Error)=>{
+                    console.log("save history failed: "+error);
+                });
+            this.$router.push({ name:"history" });         
+        }
+        
+        onHelloClicked() {
+            let history:DemoHistory = {
+                date: new Date(),
+                action: "hello"
+            };
+
+            this.saveHistory(history)
+                .then(()=>{
+                    console.log("save history succeed");
+                })
+                .catch((error:Error)=>{
+                    console.log("save history failed: "+error);
+                });
+            this.$router.push({ name:"hello", params: { name: "World", initCount:"1" }});
+        }
+        
         created(): void {
             console.log("main created");
             this.initDemo("init")
@@ -123,6 +171,10 @@
                     console.log(error);
                 });
             this.startBackgroundWork();
+            /*
+            due to vue-router issue, all params must be in type string.
+            https://github.com/vuejs/vue-router/pull/2050
+             */
             this.$router.push({ name:"hello", params:{ name: "World", initCount: "8"} })
         }
         
