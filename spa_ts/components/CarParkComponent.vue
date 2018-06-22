@@ -11,6 +11,8 @@
                     <v-progress-linear slot="progress" color="green" indeterminate></v-progress-linear>
                     <template slot="items" slot-scope="props">
                         <td>{{ props.item._id }}</td>
+                        <td class="text-xs-left">{{ props.item.name }}</td>
+                        <td class="text-xs-left"><v-icon @click="openUrl(parseCoordLink(props.item.coord))">place</v-icon></td>
                         <td class="text-xs-left"><v-icon>{{selectIcon(props.item.closed) }}</v-icon></td>
                         <td class="text-xs-left">{{ parseDate(props.item.lastUploadDate) }}</td>
                         <td class="text-xs-left">{{ checkValue(props.item.privateCar) }}</td>
@@ -32,10 +34,11 @@
 
 <script lang="ts">
 import axios from "axios";
+import * as _ from "lodash"
 import {Component, Prop, Vue} from "vue-property-decorator";
 @Component
-export default class AndroidComponent extends Vue {
-    //This component shows how to call external services
+export default class CarParkComponent extends Vue {
+    //This component shows how to call external services and the use of Vuetify data-table
     //Real-time carpark vacancies in Kowloon East
     //https://sps-opendata.pilotsmartke.gov.hk/rest/getCarparkVacanciesWorld
 
@@ -43,7 +46,17 @@ export default class AndroidComponent extends Vue {
         text: "Id",
         align: "left",
         sortable: false,
-        value: "_id"
+        value: "id"
+    },{
+        text: "Name",
+        align: "left",
+        sortable: false,
+        value: "name"
+    },{
+        text: "Location",
+        align: "left",
+        sortable: false,
+        value: "loc"
     },{
         text: "Closed",
         align: "left",
@@ -81,7 +94,7 @@ export default class AndroidComponent extends Vue {
         value: "coachVacancy"
     }];
     
-    carparkVacancies:any = [];
+    carparkVacancies:Array<any> = [];
     isLoading:boolean = true;
     
     selectIcon(value:string): string {
@@ -90,6 +103,14 @@ export default class AndroidComponent extends Vue {
             return "check";
         else
             return "close";
+    }
+    
+    openUrl(url:string): void {
+        window.open(url, "_blank");
+    }
+    
+    parseCoordLink(value:Array<number>): string {
+        return "http://maps.google.com/maps?q="+value[1]+","+value[0];
     }
     
     parseDate(value:string): string {
@@ -106,9 +127,26 @@ export default class AndroidComponent extends Vue {
     created() {
         axios.get("https://sps-opendata.pilotsmartke.gov.hk/rest/getCarparkVacancies")
             .then((response)=>{
-                console.log(response.data);
-                this.carparkVacancies = response.data.results;
-                this.isLoading = false;
+                let transformed1:any = _.keyBy(response.data.results, function (item:any) {
+                    return item._id;
+                });
+                
+                axios.get("https://sps-opendata.pilotsmartke.gov.hk/rest/getCarparkInfos?lang=zh_TW&fullload=true")
+                    .then((response)=>{
+                        let transformed2:any = _.keyBy(response.data.results, function (item:any) {
+                            return item._id;
+                        });
+                        for(let i in transformed1){
+                            transformed1[i].name = transformed2[i].name;
+                            transformed1[i].coord = transformed2[i].coordinates;
+                            this.carparkVacancies.push(transformed1[i]);
+                        }
+                        console.log("carparkVacancies:", this.carparkVacancies);
+                        this.isLoading = false;
+                    })
+                    .catch((error)=>{
+                        this.isLoading = false;
+                    });
             })
             .catch((error)=>{
                 console.log("error occurred when trying to load url: "+error);

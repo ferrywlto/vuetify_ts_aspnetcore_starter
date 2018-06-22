@@ -1,6 +1,7 @@
+<!-- This is the UI entry point of the app -->
 <template>
     <v-app>
-        <v-navigation-drawer class="primary" v-model="drawer" dark temporary app>
+        <v-navigation-drawer v-model="drawer" temporary app>
             <v-list>
                 <v-list-tile @click="onHelloClicked">
                     <v-list-tile-action>
@@ -10,20 +11,20 @@
                         <v-list-tile-title>Hello</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile @click="oniPhoneClicked">
+                <v-list-tile @click="onStockClicked">
                     <v-list-tile-action>
-                        <v-icon>phone_iphone</v-icon>
+                        <v-icon>bar_chart</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>iPhone</v-list-tile-title>
+                        <v-list-tile-title>Stock Price</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-list-tile @click="onAndroidClicked">
+                <v-list-tile @click="onCarParkClicked">
                     <v-list-tile-action>
-                        <v-icon>android</v-icon>
+                        <v-icon>directions_car</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Android</v-list-tile-title>
+                        <v-list-tile-title>Car Park</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
                 <v-list-tile @click="onHistoryClicked">
@@ -54,6 +55,7 @@
                 <v-icon>more_vert</v-icon>
             </v-btn>
         </v-toolbar>
+        <!-- Only content in this tag will change when navigate between routes -->
         <v-content>
             <v-container fluid fill-height>
                 <v-layout justify-center align-center>
@@ -67,7 +69,7 @@
                 <v-spacer></v-spacer>
                 <span>Please feel free to customize and build your awesome app from this starter template. <v-icon>favorite</v-icon></span>
                 <v-spacer></v-spacer>
-                <span><v-icon>build</v-icon> Create by Ferry To &copy{{new Date().getFullYear()}} <v-icon>sentiment_satisfied_alt</v-icon></span>               
+                <span><v-icon>build</v-icon> Created by <a href="https://github.com/ferrywlto" target="_blank">Ferry To</a> &copy{{new Date().getFullYear()}} <v-icon>sentiment_satisfied_alt</v-icon></span>               
             </v-layout>
         </v-footer>
     </v-app>
@@ -87,8 +89,8 @@
         @Action("init", { namespace: demo_namespace }) initDemo: any;
         @Action("saveHistory", { namespace: demo_namespace }) saveHistory: any;
         
-        get iPhone():string {return "iphone"};
-        get Android():string {return "android"};
+        get StockViewName():string {return "stock"};
+        get CarParkViewName():string {return "carpark"};
         
         drawer:boolean = false;
         currentDateTimeString:string = this.getDateTimeString();
@@ -96,11 +98,11 @@
         toggleDrawer() {
             this.drawer = !this.drawer;
         }
-        
-        oniPhoneClicked() {
+
+        onStockClicked() {
             let history:DemoHistory = {
                 date: new Date(),
-                action: this.iPhone
+                action: this.StockViewName
             };
             
             this.saveHistory(history)
@@ -110,13 +112,13 @@
                 .catch((error:Error)=>{
                     console.log("save history failed: "+error);
                 });
-            this.$router.push({ name:this.iPhone })
+            this.$router.push({ name:this.StockViewName })
         }
 
-        onAndroidClicked() {
+        onCarParkClicked() {
             let history:DemoHistory = {
                 date: new Date(),
-                action: this.Android
+                action: this.CarParkViewName
             };
 
             this.saveHistory(history)
@@ -126,7 +128,7 @@
                 .catch((error:Error)=>{
                     console.log("save history failed: "+error);
                 });
-            this.$router.push({ name:this.Android })
+            this.$router.push({ name:this.CarParkViewName })
         }
         
         onHistoryClicked() {
@@ -161,7 +163,7 @@
             this.$router.push({ name:"hello", params: { name: "World", initCount:"1" }});
         }
         
-        created(): void {
+        mounted(): void {
             console.log("main created");
             this.initDemo("init")
                 .then(()=>{
@@ -171,18 +173,13 @@
                     console.log(error);
                 });
             this.startBackgroundWork();
-            /*
-            due to vue-router issue, all params must be in type string.
-            https://github.com/vuejs/vue-router/pull/2050
-             */
-            this.$router.push({ name:"hello", params:{ name: "World", initCount: "8"} })
         }
         
+        //Demo how to make something that keeps running
         startBackgroundWork() {
-            setTimeout(() => {
-                this.currentDateTimeString = this.getDateTimeString();
-                this.startBackgroundWork();
-            }, 1000);
+            // setInterval(() => {
+            //     this.currentDateTimeString = this.getDateTimeString();
+            // }, 1000);
         }
         
         getDateTimeString(): string {

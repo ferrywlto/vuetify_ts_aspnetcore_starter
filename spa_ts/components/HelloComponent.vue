@@ -1,3 +1,4 @@
+<!-- This component demostrates simple interactivity of Vuetify component and routes, you can modify the url in the browser window to see the effect.  -->
 <template>
     <v-container fluid grid-list-md>
         <v-layout row wrap>

@@ -1,3 +1,4 @@
+<!-- This component shows how to use client-side persistence storage, history stored will persist even browser has been closed -->
 <template>
     <v-container fluid fill-height>
         <v-layout pa-5>
