@@ -10,7 +10,7 @@ import HistoryComponent from "../components/HistoryComponent.vue"
 export default new VueRouter({
     mode: 'history',
     routes: [
-        { path: '*', redirect: '/' }, //fall-back route. when no route match.
+        { path: '*', redirect: '/hello/world/1' }, //fall-back route. when no route match.
         { path:"/hello/:name/:initCount", name:"hello", component: HelloComponent, props: true},
         { path:"/history/:count", name:"history", component: HistoryComponent, props: true},
         { path:"/stock", name:"stock", component: StockComponent},

@@ -42,7 +42,7 @@ export default class HistoryComponent extends Vue {
         value: 'date'
     },{
         text: 'Action',
-        align: 'left',
+        align: 'right',
         sortable: false,
         value: 'action'
     }];
