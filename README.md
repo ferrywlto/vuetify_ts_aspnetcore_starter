@@ -1,7 +1,7 @@
-#vuetify_ts_aspnetcore_starter 
-:cool: a starter project for learning how to build simple web app with Vue :+1:
+# vuetify_ts_aspnetcore_starter 
+:cool: A starter project for learning how to build simple web app with Vue :+1:
 
-##Summary
+## Summary
 This is a repository that demostrate how to make a web app with Vue.
 The simple web application contains:
 - Layout elements like drawer, navigation bar... 
@@ -37,7 +37,7 @@ The web app used the following technologies/libraries:
 
     - aspnet-webpack, webpack-hot-, webpack-dev-middleware: allows ASP.NET Core to hot-reload the front-end web app upon changes on the fly, without restarting the back-end, and make browser auto reload the latest version.
     
- ##Objective
+ ## Objective
  
  Personally, I think learning Vue is fun, and is easier than Angular/React for me.
  If you want to know about VueJS, webpack and ASP.NET Core, 
@@ -55,7 +55,7 @@ The web app used the following technologies/libraries:
  
  Although ASP.NET Core is used as back-end, other technology like Node/Java can also be used.
  
- ##How to build and try it?
+ ## How to build and try it?
  
  1. First clone this repo via GitHub Desktop or `git clone https://github.com/VerdantSparks/vuetify_ts_aspnetcore_starter`
  
@@ -66,21 +66,21 @@ The web app used the following technologies/libraries:
 
 3. Run ASP.NET Core: `dotnet run`
 
-4. Open browser and type in url (default is http://localhost:5000) and you are good to go.
+4. Open browser and type in url (default is `http://localhost:5000`) and you are good to go.
 
-##Some explanation, if you are interested...
+## Some explanation, if you are interested...
 
-- #####Make your Vue app support Internet Explorer:
+- ##### Make your Vue app support Internet Explorer:
     Only support IE11+, no support for too old browsers.
     1. add `import 'babel-polyfill'` in your `main.js` or `main.ts`
     2. add `babel-polyfill` package in the `devDependencies/dependencies` section in your `package.json`
     3. your `webpack.config.js` should change the `entry` section to use `babel-polyfill`, 
     e.g. `entry: { main: ['babel-polyfill','./spa_ts/main.ts'] }`
     
-- #####Use Typescript instead of Javascript:
+- ##### Use Typescript instead of Javascript:
     - add package `typescript` in your `package.json`
     - add file `tsconfig.json` in your project root folder
-    ```json
+    ```
     {
       "compilerOptions": {
         "outDir": "./built/", <- set output directory for compiled JS from TS
@@ -101,7 +101,7 @@ The web app used the following technologies/libraries:
     - add new rule in `webpack.config.js`, so webpack know to compile TS files, 
     The option here set .vue file (usually Single File Component) as .vue.ts
     and then load by webpack.
-    ```json
+    ```
     {
         test: /\.tsx?$/,
         loader: 'ts-loader',
@@ -112,12 +112,12 @@ The web app used the following technologies/libraries:
     }
     ```
     
-##License
+## License
 [MIT](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2018-present, [Ferry To](https://github.com/ferrywlto)@[VerdantSparks](https://github.com/VerdantSparks)
 
-##Contribute
+## Contribute
 If this repo helps and you want to contribute, you may consider donate a meal to my pets 
 :cat::hamster::hamster::hamster::hamster::cat: [[Here]](https://paypal.me/VerdantSparks) :sunglasses::metal:
 
