@@ -119,7 +119,6 @@ Copyright (c) 2018-present, [Ferry To](https://github.com/ferrywlto)@[VerdantSpa
 
 ##Contribute
 If this repo helps and you want to contribute, you may consider donate a meal to my pets 
-[[Here]](https://paypal.me/ferrywlto).
-I got :cat::cat: and :hamster::hamster::hamster::hamster: to feed. :sunglasses::metal:
+:cat::hamster::hamster::hamster::hamster::cat: [[Here]](https://paypal.me/VerdantSparks) :sunglasses::metal:
 
 Pull request and forking is always welcome. :beers:

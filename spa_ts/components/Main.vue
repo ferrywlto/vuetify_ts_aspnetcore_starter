@@ -35,6 +35,14 @@
                         <v-list-tile-title>History</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
+                <v-list-tile @click="onDonateClicked">
+                    <v-list-tile-action>
+                        <v-icon>money</v-icon>
+                    </v-list-tile-action>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Donation Calculator</v-list-tile-title>
+                    </v-list-tile-content>
+                </v-list-tile>
             </v-list>
         </v-navigation-drawer>
         <v-toolbar class="secondary" dark app>
@@ -161,6 +169,22 @@
                     console.log("save history failed: "+error);
                 });
             this.$router.push({ name:"hello", params: { name: "World", initCount:"1" }});
+        }
+
+        onDonateClicked(){
+            let history:DemoHistory = {
+                date: new Date(),
+                action: "donate"
+            };
+
+            this.saveHistory(history)
+                .then(()=>{
+                    console.log("save history succeed");
+                })
+                .catch((error:Error)=>{
+                    console.log("save history failed: "+error);
+                });
+            this.$router.push({ path:"/donate/1" });
         }
         
         mounted(): void {
