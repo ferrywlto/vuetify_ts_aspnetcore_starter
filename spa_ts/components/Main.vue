@@ -13,7 +13,7 @@
                 </v-list-tile>
                 <v-list-tile @click="onStockClicked">
                     <v-list-tile-action>
-                        <v-icon>bar_chart</v-icon>
+                        <v-icon>insert_chart</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
                         <v-list-tile-title>Stock Price</v-list-tile-title>
@@ -37,7 +37,7 @@
                 </v-list-tile>
                 <v-list-tile @click="onDonateClicked">
                     <v-list-tile-action>
-                        <v-icon>money</v-icon>
+                        <v-icon>attach_money</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
                         <v-list-tile-title>Donation Calculator</v-list-tile-title>

@@ -50,19 +50,29 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
+                oneOf: [
+                    // this matches `<style module>`
                     {
-                        loader: 'vue-style-loader'
+                        resourceQuery: /module/,
+                        use: [
+                            'vue-style-loader',
+                            {
+                                loader: 'css-loader',
+                                options: {
+                                    modules: true,
+                                    localIdentName: '[local]_[hash:base64:5]'
+                                }
+                            }
+                        ]
                     },
+                    // this matches plain `<style>` or `<style scoped>`
                     {
-                        loader: 'css-loader',
-                        options: {
-                            modules: true,
-                            localIdentName: '[local]_[hash:base64:8]'
-                        }
+                        use: [
+                            'vue-style-loader',
+                            'css-loader'
+                        ]
                     }
                 ]
-                // loader: 'style-loader!css-loader'
             }
         ]
     },
