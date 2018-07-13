@@ -201,9 +201,9 @@
         
         //Demo how to make something that keeps running
         startBackgroundWork() {
-            // setInterval(() => {
-            //     this.currentDateTimeString = this.getDateTimeString();
-            // }, 1000);
+            setInterval(() => {
+                this.currentDateTimeString = this.getDateTimeString();
+            }, 1000);
         }
         
         getDateTimeString(): string {
