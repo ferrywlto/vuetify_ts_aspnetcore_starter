@@ -1,4 +1,6 @@
 # vuetify_ts_aspnetcore_starter 
+![GitHub issues](https://img.shields.io/github/issues/VerdantSparks/vuetify_ts_aspnetcore_starter.svg)
+
 :cool: A starter project for learning how to build simple web app with Vue :+1:
 
 ## Summary
