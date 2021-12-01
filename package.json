@@ -36,7 +36,7 @@
     "axios": "^0.24.0",
     "lodash": "^4.17.10",
     "@types/lodash": "^4.14.177",
-    "chart.js": "^3.6.0",
+    "chart.js": "^3.6.1",
     "@types/chart.js": "^2.9.34",
     "material-design-icons-iconfont": "^6.1.1"
   }
