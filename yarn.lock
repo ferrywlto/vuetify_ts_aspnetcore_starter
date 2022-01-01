@@ -7,10 +7,10 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@types/chart.js@^2.9.34":
-  version "2.9.34"
-  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.34.tgz#d41fb6b74b72a56bac70255bb4ed087386b66ed6"
-  integrity sha512-CtZVk+kh1IN67dv+fB0CWmCLCRrDJgqOj15qPic2B1VCMovNO6B7Vhf/TgPpNscjhAL1j+qUntDMWb9A4ZmPTg==
+"@types/chart.js@^2.9.35":
+  version "2.9.35"
+  resolved "https://registry.yarnpkg.com/@types/chart.js/-/chart.js-2.9.35.tgz#10ddee097ab9320f8eabd8a31017fda3644d9218"
+  integrity sha512-MWx/zZlh4wHBbM4Tm4YsZyYGb1/LkTiFLFwX/FXb0EJCvXX2xWTRHwlJ2RAAEXWxLrOdaAWP8vFtJXny+4CpEw==
   dependencies:
     moment "^2.10.2"
 
