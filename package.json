@@ -22,7 +22,7 @@
     "vuetify": "^2.6.10",
     "aspnet-webpack": "^3.0.0",
     "babel-polyfill": "^6.26.0",
-    "css-loader": "^5.2.7",
+    "css-loader": "^7.1.2",
     "file-loader": "^6.0.0",
     "json-loader": "^0.5.7",
     "style-loader": "^2.0.0",
