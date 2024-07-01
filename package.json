@@ -19,7 +19,7 @@
     "vue-template-compiler": "^2.7.0",
     "vuex": "^3.0.1",
     "vuex-class": "^0.3.1",
-    "vuetify": "^2.6.10",
+    "vuetify": "^3.6.10",
     "aspnet-webpack": "^3.0.0",
     "babel-polyfill": "^6.26.0",
     "css-loader": "^5.2.7",
